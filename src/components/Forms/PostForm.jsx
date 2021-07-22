@@ -17,8 +17,8 @@ const MyPostForm = () => {
 
     const savePost = async (newPost) => {
         try{
-            await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
-            console.log(" info sent to post endopint:", newPost)
+            const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
+            console.log(" info sent to post endopint:", resp.data)
         }
         catch (error) {
             message.error("Failed to create post. Clear your entries and check fields requirements shown in red")
