@@ -17,21 +17,11 @@ const MyPostForm = () => {
 
     const savePost = async (newPost) => {
         try{
-           /*  await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
-            console.log(" info sent to post endopint:", newPost) */
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: newPost.title,
-                body: newPost.content
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            }) 
-            .then((response) => response.json())
-            .then((json) => console.log(json));
-            
+            const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
+            console.log(" info sent to post endopint:", resp.data)
+            message.success("Post succcesfully created")
+            //aca quisiera llamar a AddNewElement de PageList y actualizar el estado del arreglo de elementos
+            //para que lo agregue directamente ahi 
         }
         catch (error) {
             message.error("Failed to create post. Clear your entries and check fields requirements shown in red")
