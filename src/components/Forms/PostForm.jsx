@@ -7,7 +7,7 @@ const { Item } = Form
 const MyPostForm = () => {
     
     const onFinish = (newPost) => {
-        console.log('Success:', newPost);
+        console.log('Success. Info sent to post endpoint:', newPost);
         savePost(newPost)
       };
     
@@ -18,8 +18,8 @@ const MyPostForm = () => {
     const savePost = async (newPost) => {
         try{
             const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
-            console.log(" info sent to post endopint:", resp.data)
-            message.success("Post succcesfully created")
+            console.log(" Response from post endopint:", resp.data)
+            message.success(`Post N° ${resp.data.id} succesfully created`)
             //aca quisiera llamar a AddNewElement de PageList y actualizar el estado del arreglo de elementos
             //para que lo agregue directamente ahi 
         }

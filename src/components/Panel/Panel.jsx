@@ -2,8 +2,9 @@ import { Collapse, message } from 'antd';
 import React, { useState } from 'react';
 import { Modal} from 'antd';
 import axios from 'axios'
-
 import {EditOutlined,DeleteOutlined} from '@ant-design/icons';
+import MyEditForm from '../Forms/EditForm';
+
 const { Panel } = Collapse;
 
 const MyPanel = (props) => {
@@ -22,9 +23,9 @@ const MyPanel = (props) => {
 
 const handleOnDelete = async () => {
   try{
-    const resp = await axios.delete('https://jsonplaceholder.typicode.com/posts/:'+ element.id);
+    const resp = await axios.delete('https://jsonplaceholder.typicode.com/posts/'+ element.id);
     message.success(`Post N° ${element.id} succesfully deleted`)
-    console.log("delete successfully executed at:", resp.config)
+    console.log("delete successfully executed at:", resp.config.url)
     setIsModalVisible(false)
   } 
   catch (error){
@@ -46,9 +47,8 @@ const handleOnDelete = async () => {
 };
 
   const genExtra = () => (
-  <EditOutlined style={{fontSize:'15px'}}
+  <EditOutlined style={{fontSize:'18px'}}
       onClick={event => {
-      console.log('event:', event)
       event.stopPropagation();
       showEditModal()
       }}
@@ -56,7 +56,7 @@ const handleOnDelete = async () => {
 )
 
 const genExtra2 = () => (
-  <DeleteOutlined style={{fontSize:'15px', color:'red'}}
+  <DeleteOutlined style={{fontSize:'18px', color:'red'}}
       onClick={event => {
       event.stopPropagation();
       showModal()
@@ -93,7 +93,7 @@ return (
     visible={isEditModalVisible}
     onOk={handleEditOk} 
     onCancel={handleEditCancel}>
-      <p> Aquí debería incluir el form que use para el post </p>
+      <MyEditForm element = {element}/>
   </Modal>
   </>
 )
