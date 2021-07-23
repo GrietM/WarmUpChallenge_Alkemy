@@ -6,9 +6,9 @@ const { Panel } = Collapse;
 const MyPanel = (props) => {
  const element = props.element
 
- const genExtra = () => (
-  <EditOutlined
-    onClick={event => {
+  const genExtra = () => (
+  <EditOutlined style={{fontSize:'20px', color:'blue'}}
+      onClick={event => {
       // If you don't want click extra trigger collapse, you can prevent this:
       event.stopPropagation();
       message.success("open modal with edit form")
@@ -17,7 +17,7 @@ const MyPanel = (props) => {
 )
 
 const genExtra2 = () => (
-  <DeleteOutlined
+  <DeleteOutlined style={{fontSize:'20px', color:'red'}}
     onClick={event => {
       // If you don't want click extra trigger collapse, you can prevent this:
       event.stopPropagation();
@@ -26,17 +26,16 @@ const genExtra2 = () => (
   />
 )
 
+const extraArray = [genExtra(),genExtra2()]
+
 return (
   <>
   <Collapse accordion>
     <Panel 
         header= {element.title} 
         key="1" 
-        extra={genExtra()}
-        //Darío si ves esto... como hago para pasarle dos valores a la prop extra 
-        // de manera de poder agregar genExtra2 para la accion de delete?
-        //extra={genExtra2()}
-        >
+        extra = {extraArray}
+    >
       <p>{element.body}</p>
     </Panel>
   </Collapse>
