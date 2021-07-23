@@ -1,6 +1,6 @@
 import { Collapse, message } from 'antd';
 import React, { useState } from 'react';
-import { Modal} from 'antd';
+import { Modal, Button} from 'antd';
 import axios from 'axios'
 import {EditOutlined,DeleteOutlined} from '@ant-design/icons';
 import MyEditForm from '../Forms/EditForm';
@@ -91,9 +91,11 @@ return (
   <Modal 
     title="Edit Modal" 
     visible={isEditModalVisible}
-    onOk={handleEditOk} 
-    onCancel={handleEditCancel}>
-      <MyEditForm element = {element}/>
+    //onOk={handleEditOk} 
+    onCancel={handleEditCancel}
+    footer={''}
+    >
+    <MyEditForm element = {element}/>
   </Modal>
   </>
 )
