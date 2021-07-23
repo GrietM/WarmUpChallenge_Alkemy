@@ -29,7 +29,6 @@ useEffect(() =>{
   return (
     <div>
       <div>
-        {/* <Form changeList = {addNewProfile} /> */}
         <Space size="middle">
         <div className= "grilla">
         <PanelsList data = {elements} />
