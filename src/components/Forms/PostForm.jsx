@@ -47,13 +47,13 @@ const MyPostForm = () => {
      >
             <Item label="Title" 
                 name="title" 
-                rules={[{ required: true, message: 'Insert title (max:20)' , max:20 }]}  
+                rules={[{ required: true, message: 'Insert title. This field is required'}]}  
             >
             <Input/>
             </Item>
             <Item label="Content" 
                 name="content" 
-                rules={[{ required: true, message: 'Insert content'}]}   
+                rules={[{ required: true, message: 'Insert content. This field is required'}]}   
             >
             <Input  />
             </Item>
