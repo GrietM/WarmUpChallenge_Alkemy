@@ -7,6 +7,7 @@ const PanelsList = (props) => {
         {props.data.map(element =>
         <MyPanel
             element = {element}
+            key = {element.id}
         />
         )}
     </div>
