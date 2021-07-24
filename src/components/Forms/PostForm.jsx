@@ -1,10 +1,17 @@
 import { Form, Input, Button, message} from 'antd';
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 
 const { Item } = Form
 
-const MyPostForm = () => {
+const MyPostForm = (props) => {
+
+    const [elements, setElements] = useState([])
+    
+    const addNewElement = (elementsData) => {
+        setElements([...elements,elementsData])
+        console.log(elements)
+    }
     
     const onFinish = (newPost) => {
         console.log('Success. Info sent to post endpoint:', newPost);
@@ -20,6 +27,8 @@ const MyPostForm = () => {
             const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
             console.log(" Response from post endopint:", resp.data)
             message.success(`Post N° ${resp.data.id} succesfully created`)
+            setElements(resp.data)
+            props.changeList (resp.data)
             //aca quisiera llamar a AddNewElement de PageList y actualizar el estado del arreglo de elementos
             //para que lo agregue directamente ahi 
         }
@@ -44,6 +53,7 @@ const MyPostForm = () => {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        changeList = {addNewElement}
      >
             <Item label="Title" 
                 name="title" 

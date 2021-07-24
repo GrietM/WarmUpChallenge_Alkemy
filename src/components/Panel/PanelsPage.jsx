@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import PanelsList from './PanelsList';
-import {Space, message} from 'antd'
+import {message} from 'antd'
 import axios from 'axios'
-import { Typography } from 'antd';
-
-const { Title } = Typography;
 
 function PanelsPage () {
   
   const [elements, setElements] = useState([])
-  //const [loading, setLoading] = useState(true)
-
+ 
   console.log('elements :', elements)
 
   const getAllPosts = async () => {

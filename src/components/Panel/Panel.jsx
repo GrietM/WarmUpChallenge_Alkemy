@@ -1,6 +1,6 @@
 import { Collapse, message } from 'antd';
 import React, { useState } from 'react';
-import { Modal, Button} from 'antd';
+import { Modal} from 'antd';
 import axios from 'axios'
 import {EditOutlined,DeleteOutlined} from '@ant-design/icons';
 import MyEditForm from '../Forms/EditForm';
@@ -33,10 +33,6 @@ const handleOnDelete = async () => {
     throw error
   }
 } 
-
- const handleEditOk = () => {
-  setIsEditModalVisible(false);
-};
 
  const handleCancel = () => {
    setIsModalVisible(false);
@@ -71,7 +67,8 @@ return (
   <Collapse accordion>
     <Panel 
         header= {element.title} 
-        key="1" 
+        //key="1" 
+        key = {element.id}
         extra = {extraArray}
     >
       <p>{element.body}</p>
